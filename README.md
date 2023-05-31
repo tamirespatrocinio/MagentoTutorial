@@ -153,7 +153,7 @@ php -S 127.0.0.1:8082 -t ./pub/ ./phpserver/router.php
 ```
 Após a conclusão do comando, você deverá ver o painel do Magento. 
 
-![magento](https://github.com/tamirespatrocinio/MagentoTutorial/assets/73259410/114d480f-f331-4960-8158-1437c28b1bfc)
+![magento](https://github.com/tamirespatrocinio/MagentoTutorial/assets/73259410/e7d568d6-a92c-4fa5-9a69-ef3506f36a56)
 
 Para acessar o painel de administração, basta abrir a URL no seu navegador:
 `http://127.0.0.1:8082/admin_wrr7yw/`.
@@ -163,7 +163,7 @@ Certifique-se de substituir "admin_wrr7yw" pela URL correta do seu painel de adm
 ## Erro!
 * Se ocorrer um bug semelhante ao mostrado na imagem, siga os comandos abaixo para solucioná-lo e rode a aplicação novamente: 
 
-![erro](https://github.com/tamirespatrocinio/MagentoTutorial/assets/73259410/03d52a6f-c2a2-4498-959e-76f23eb7fe8c)
+![erro](https://github.com/tamirespatrocinio/MagentoTutorial/assets/73259410/f0aa874c-df39-414d-a9d9-1a832850063b)
 ```py
     php bin/magento setup:upgrade
 ```
