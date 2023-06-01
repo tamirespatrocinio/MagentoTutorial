@@ -31,13 +31,13 @@ Após dedicar várias horas de pesquisa e explorar diversos tutoriais, finalment
 * 5.1. No Xampp, o arquivo `php.ini` geralmente está localizado na pasta php do diretório de instalação. Você pode seguir o caminho: `C:\xampp\php\php.ini.` 
 * 5.2. Abra o arquivo php.ini em um editor de texto e procure pela seção [Extensions] no arquivo para descomentar. Se não existir, você pode adicioná-la no final do arquivo.
 ```py
-    extension=intl
-    ...
-    extension=soap
-    extension=sockets
-    extension=sodium
-    ...
-    extension=xsl
+extension=intl
+...
+extension=soap
+extension=sockets
+extension=sodium
+...
+extension=xsl
 ```
 * 5.3. Salve as alterações e reinicie o servidor Apache no painel de controle do Xampp para que as alterações tenham efeito.
 
@@ -46,11 +46,11 @@ Após dedicar várias horas de pesquisa e explorar diversos tutoriais, finalment
 * 6.1. Abra um terminal ou prompt de comando e navegue até a pasta raiz do Xampp (normalmente, algo como "C:\xampp\htdocs" no Windows).
 * 6.2. Execute o seguinte comando para baixar o Magento usando o Composer:
 ```py
-    composer create-project --repository=https://repo.magento.com/ magento/project-community-edition
+composer create-project --repository=https://repo.magento.com/ magento/project-community-edition
 ```
 com versão
 ```py
-    composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.4.5
+composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition=2.4.5
 ```
 * 6.3. Durante o processo de instalação, você será solicitado a fornecer suas credenciais da conta do Magento Marketplace. Certifique-se de ter uma conta criada e as credenciais em mãos.
 
@@ -76,58 +76,58 @@ private function validateURLScheme(string $filename) : bool
 * 7.4. Navegue até a pasta `vendor/magento/framework/View/Element/Template/File` e abra o arquivo `Validator.php`.
 * 7.5. Modifique a linha que contém `$realPath = str_replace('\\', '/',$this->fileDriver->getRealPath($path));` para:
 ```py
-    $realPath = str_replace('\\', '/',$this->fileDriver->getRealPath($path));
+$realPath = str_replace('\\', '/',$this->fileDriver->getRealPath($path));
 ```
 * 7.6. Para finalizar, siga até pasta do magento e acesse `vendor\magento\framework\Interception`.
 * 7.7. Abra o arquivo `PluginListGenerator.php` procure por $cacheId para substituí-lo:
 ```py
-    $cacheId = implode('-', $this->scopePriorityScheme) . '-' . $this->cacheId;
+$cacheId = implode('-', $this->scopePriorityScheme) . '-' . $this->cacheId;
 ```
 ## Passo 8: Executando Comandos do Magento no CMD
 
 * 8.1. Abra o CMD na pasta do Magento.
 * 8.2. Este comando realiza a instalação do Magento e configura várias opções, incluindo a URL base, banco de dados, informações do administrador, idioma, moeda, fuso horário e configurações do Elasticsearch. Certifique-se de que as opções do comando estejam corretas para o seu ambiente: 
 ```py
-    php bin/magento setup:install --base-url=http://127.0.0.1:8082 --db-host=localhost --db-name=magento2 --db-user=root --db-password="" --admin-firstname=Magento --admin-lastname=User --admin-email=user@example.com --admin-user=admin --admin-password=admin123 --language=en_US --currency=USD --timezone=America/Chicago --use-rewrites=1 --search-engine=elasticsearch7 --elasticsearch-host=http://localhost --elasticsearch-port=9200
+php bin/magento setup:install --base-url=http://127.0.0.1:8082 --db-host=localhost --db-name=magento2 --db-user=root --db-password="" --admin-firstname=Magento --admin-lastname=User --admin-email=user@example.com --admin-user=admin --admin-password=admin123 --language=en_US --currency=USD --timezone=America/Chicago --use-rewrites=1 --search-engine=elasticsearch7 --elasticsearch-host=http://localhost --elasticsearch-port=9200
  ```
 * 8.3. Após executar o comando, aguarde o processo de instalação ser concluído.
 * 8.4. Durante a instalação, você poderá ver um nome de acesso ao painel de administração gerado automaticamente, como "admin_wrr7yw". Anote esse nome de acesso, pois ele será necessário para acessar o painel de administração do Magento posteriormente.
 * 8.5. Após a conclusão da instalação, siga executando os seguintes comandos separadamente:
 
 ```py
-    php bin/magento setup:di:compile
+php bin/magento setup:di:compile
 ```
 * Este comando compila o código do Magento e gera arquivos de dependência. É importante executá-lo sempre que você fizer alterações no código do Magento.
 ```py
-    php bin/magento indexer:reindex
+php bin/magento indexer:reindex
 ```
 * Este comando reindexa os índices do Magento. É necessário executá-lo sempre que houver alterações nos dados do Magento, como produtos, categorias ou atributos.
 ```py
-    php bin/magento setup:upgrade
+php bin/magento setup:upgrade
 ```
 * Este comando atualiza o esquema do banco de dados do Magento para refletir quaisquer alterações feitas nos módulos. É importante executá-lo sempre que você fizer atualizações ou instalações de novos módulos.
 ```py
-    php bin/magento setup:static-content:deploy -f en_US en_GB
+php bin/magento setup:static-content:deploy -f en_US en_GB
 ```
 * Este comando implanta os arquivos estáticos do Magento para os idiomas en_US (Inglês dos EUA) e en_GB (Inglês do Reino Unido). Certifique-se de substituir esses idiomas pelos que você está usando no seu projeto.
 ```py
-    php bin/magento deploy:mode:set developer
+php bin/magento deploy:mode:set developer
 ```
 * Este comando define o modo de implantação do Magento como "developer" (desenvolvedor). No modo de desenvolvedor, o Magento exibe mensagens detalhadas de erro e regenera automaticamente os arquivos estáticos. É recomendado para ambientes de desenvolvimento.
 ```py
-    php bin/magento cache:clean
+php bin/magento cache:clean
 ```
 * Este comando limpa o cache do Magento, removendo os arquivos em cache e os dados armazenados em cache. É útil executá-lo após fazer alterações no código ou na configuração do Magento.
 ```py
-    php bin/magento cache:flush
+php bin/magento cache:flush
 ```
 * Este comando descarrega completamente o cache do Magento, removendo todos os arquivos e dados em cache. Use com cuidado, pois isso pode levar algum tempo para regenerar o cache quando o Magento for acessado novamente.
 ```py
-    php bin/magento module:disable Magento_Csp
+php bin/magento module:disable Magento_Csp
 ```
 * Este comando desativa o módulo Magento_Csp. Você pode substituir "Magento_Csp" pelo nome do módulo que deseja desativar. Lembre-se de que a desativação de um módulo pode afetar a funcionalidade do Magento, portanto, faça isso apenas se necessário.
 ```py
-    php bin/magento module:disable Magento_TwoFactorAuth
+php bin/magento module:disable Magento_TwoFactorAuth
 ```
 * Este comando desativa o módulo Magento_TwoFactorAuth, que é responsável pela autenticação de dois fatores no Magento. Se você não precisa dessa funcionalidade de segurança adicional, pode desativá-la usando esse comando.
 
@@ -165,10 +165,10 @@ Certifique-se de substituir "admin_wrr7yw" pela URL correta do seu painel de adm
 
 ![erro](https://github.com/tamirespatrocinio/MagentoTutorial/assets/73259410/8a3be36f-127d-46d1-97ab-3ed909519c2d)
 ```py
-    php bin/magento setup:upgrade
+php bin/magento setup:upgrade
 ```
 ```py
-    php bin/magento setup:static-content:deploy -f 
+php bin/magento setup:static-content:deploy -f 
 ```
 * Este comando é utilizado para implantar os arquivos estáticos do Magento. A opção -f indica que você deseja forçar a implantação, substituindo os arquivos estáticos existentes, se houver. Ao executar este comando, o Magento irá compilar e copiar os arquivos estáticos relevantes para os idiomas configurados no seu projeto. Isso inclui arquivos CSS, JavaScript, imagens e outros recursos estáticos necessários para o funcionamento correto da loja virtual.
 
