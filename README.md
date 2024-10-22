@@ -56,7 +56,8 @@ composer create-project --repository-url=https://repo.magento.com/ magento/proje
 
 ## Step 7: Modifying Files
 
-**Note: Always carefully check single and double quotes, as they can be copied incorrectly due to the platform used.**
+> [!NOTE]
+> Always carefully check single and double quotes, as they can be copied incorrectly due to the platform used.
 
 7.1. Open the Magento folder in your editor of choice, navigate to the `vendor/magento/framework/Image/Adapter` folder, and open the `Gd2.php` file.
 
@@ -162,7 +163,8 @@ To access the admin panel, simply open the URL in your browser:
 `http://127.0.0.1:8082/admin_wrr7yw/`.
 Make sure to replace "admin_wrr7yw" with the correct URL for your admin panel.
 
-## Error!
+
+> [!CAUTION]
 If you encounter a bug similar to the one shown in the image, follow the commands below to resolve it and run the application again:
 
 ![error](https://github.com/tamirespatrocinio/MagentoTutorial/assets/73259410/8a3be36f-127d-46d1-97ab-3ed909519c2d)
